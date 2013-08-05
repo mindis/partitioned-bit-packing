@@ -1,2 +1,2 @@
-partitioned-bit-packing
+Partitioned Bit-Packing
 =======================
