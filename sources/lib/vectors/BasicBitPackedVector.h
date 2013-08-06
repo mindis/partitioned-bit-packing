@@ -15,46 +15,46 @@ typedef uint value_t;
 
 class BasicBitPackedVector : public AbstractBitPackedVector {
 private:
-	std::vector<store_t> m_store;
-	uint m_bitOffset;
+    std::vector<store_t> m_store;
+    uint m_bitOffset;
 
-	// Bits used for each element stored in this Vector
-	// Set initially, never changed
-	uint m_bits;
+    // Bits used for each element stored in this Vector
+    // Set initially, never changed
+    uint m_bits;
 
-	// Currently inserted number of values
-	uint m_size;
+    // Currently inserted number of values
+    uint m_size;
 
-	uint m_bvBits, m_bvShift;
+    uint m_bvBits, m_bvShift;
 
 
 public:
-	BasicBitPackedVector(uint bits);
-	~BasicBitPackedVector();
+    BasicBitPackedVector(uint bits);
+    ~BasicBitPackedVector();
 
-	void init(uint bits);
+    void init(uint bits);
 
-	void push_back(const value_t value);
+    void push_back(const value_t value);
 
-	value_t get(const size_t index);
-    
+    value_t get(const size_t index);
+
     void setEncodingBits(uint bits);
 
-	value_t operator[] (uint const& index) const;
-    
-	void printConfig();
+    value_t operator[] (uint const& index) const;
 
-	void printBits();
+    void printConfig();
 
-	inline size_t size() {
-		return m_size;
-	}
+    void printBits();
 
-	inline uint bits() {
-		return m_bits;
-	}
+    inline size_t size() {
+        return m_size;
+    }
 
-	inline std::vector<store_t>& store() {
+    inline uint bits() {
+        return m_bits;
+    }
+
+    inline std::vector<store_t>& store() {
         return m_store;
     }
 };
