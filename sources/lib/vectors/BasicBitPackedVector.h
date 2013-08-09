@@ -36,7 +36,7 @@ public:
 
     void push_back(const value_t value);
 
-    value_t get(const size_t index);
+    value_t get(size_t index);
 
     void setEncodingBits(uint bits);
 

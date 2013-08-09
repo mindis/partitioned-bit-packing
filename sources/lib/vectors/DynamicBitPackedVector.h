@@ -13,7 +13,7 @@ public:
     void setEncodingBits(uint bits);
 
 
-    inline value_t get(const size_t index)  {
+    inline value_t get(size_t index)  {
         return m_vector->get(index);
     }
     inline void push_back(const value_t value) {
