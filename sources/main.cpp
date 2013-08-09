@@ -1,13 +1,15 @@
 
 #include <stdio.h>
 #include "tests/vector_tests.h"
+#include "tests/column_tests.h"
 
 
 int main(int argc, char* argv[]) {
     printf("Program started.\n\n");
 
-
+    
     run_vector_tests();
+    run_column_tests();
 
 
 
