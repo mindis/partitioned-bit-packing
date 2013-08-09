@@ -11,48 +11,48 @@
 template <typename _T>
 class Dictionary {
 private:
-	std::map<_T, uint> m_encodeMap;
-	std::vector<_T> m_decodeMap;
+    std::map<_T, uint> m_encodeMap;
+    std::vector<_T> m_decodeMap;
 
-	uint m_distinctValues;
-	uint m_bits, m_bitValues;
+    uint m_distinctValues;
+    uint m_bits, m_bitValues;
 
 public:
-	Dictionary() : m_distinctValues(0), m_bits(0) {}
-	Dictionary(uint startBits) : m_distinctValues(0) {
-		m_bits = startBits;
-		m_bitValues = uint(pow(2, m_bits));
-	}
+    Dictionary() : m_distinctValues(0), m_bits(0) {}
+    Dictionary(uint startBits) : m_distinctValues(0) {
+        m_bits = startBits;
+        m_bitValues = uint(pow(2, m_bits));
+    }
 
-	uint encode(const _T& val) {
-		if (m_encodeMap.find(val) == m_encodeMap.end()) {
-			uint code = m_distinctValues;
+    uint encode(const _T& val) {
+        if (m_encodeMap.find(val) == m_encodeMap.end()) {
+            uint code = m_distinctValues;
 
-			if (m_distinctValues+1 > m_bitValues) {
-				m_bits++;
-				m_bitValues = uint(pow(2, m_bits));
-			}
+            if (m_distinctValues+1 > m_bitValues) {
+                m_bits++;
+                m_bitValues = uint(pow(2, m_bits));
+            }
 
-			m_distinctValues++;
+            m_distinctValues++;
 
-			m_encodeMap.insert(std::make_pair(val, code));
-			m_decodeMap.push_back(val);
-			return code;
-		}
-		return m_encodeMap[val];
-	}
+            m_encodeMap.insert(std::make_pair(val, code));
+            m_decodeMap.push_back(val);
+            return code;
+        }
+        return m_encodeMap[val];
+    }
 
-	_T& decode(uint val) {
-		return m_decodeMap[val];
-	}
+    _T& decode(uint val) {
+        return m_decodeMap[val];
+    }
 
-	uint getBits() {
-		return m_bits;
-	}
+    uint getBits() {
+        return m_bits;
+    }
 
-	uint getDistinctValues() {
-		return m_distinctValues;
-	}
+    uint getDistinctValues() {
+        return m_distinctValues;
+    }
 };
 
 

@@ -35,7 +35,7 @@ bool abstract_column_test(const char* test_name, AbstractColumn<long>* v, size_t
 
 bool run_column_tests() {
     bool ok = true;
-    
+
     abstract_column_test("BPV", new Column<BasicBitPackedVector, long>(8), 200);
     abstract_column_test("Dynamic BPV", new Column<DynamicBitPackedVector, long>(2), 200);
 
