@@ -24,6 +24,8 @@ bool abstract_vector_test(const char* test_name, AbstractBitPackedVector* v, siz
         }
     }
 
+    delete v;
+
     ok = (expect_fail && !ok) || (!expect_fail && ok);
     if (ok) printf("Abstract Vector Test passed: %s\n", test_name);
     else printf("Abstract Vector Test failed: %s\n", test_name);
@@ -56,6 +58,7 @@ bool dynamic_vector_test() {
             break;
         }
     }
+
     if (ok) printf("Dynamic Vector Test passed.\n");
     else printf("Dynamic Vector Test failed.\n");
     return ok;
@@ -72,8 +75,8 @@ bool run_vector_tests() {
     ok &= abstract_vector_test("Dynamic BPV Test 1", new DynamicBitPackedVector(10), 1000);
     ok &= dynamic_vector_test();
 
-    if (ok) printf("All vector tests passed!\n");
-    else printf("Some vector tests failed!\n");
+    if (ok) printf("All vector tests passed!\n\n");
+    else printf("Some vector tests failed!\n\n");
     return ok;
 }
 
