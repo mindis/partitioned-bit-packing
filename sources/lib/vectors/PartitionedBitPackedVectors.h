@@ -1,116 +1,17 @@
-#ifndef PARTITIONED_BIT_VECTORS
-#define PARTITIONED_BIT_VECTORS
+#ifndef PARTITIONED_BIT_PACKED_VECTORS_H_
+#define PARTITIONED_BIT_PACKED_VECTORS_H_
 
-#include <stdexcept>
-#include <algorithm>
-#include "vectors/BasicBitPackedVector.h"
+#include "vectors/BasicPartitionedVector.h"
 
 
 
-class BasicPartitionedVector : public AbstractBitPackedVector {
-protected:
-    std::vector<BasicBitPackedVector*> m_vectorPool;
-
-    std::vector<BasicBitPackedVector*> m_vectors;
-    std::vector<size_t> m_prefixSums;
-
-    BasicBitPackedVector* m_activeVector;
-    uint m_size, m_bits;
-
-    void initializeFirstPartition(uint baseEncoding) {
-        if (baseEncoding < 1) printf("Stupid! BaseEncoding can't be less than 1!!!");
-        m_bits = baseEncoding;
-
-        m_vectorPool.reserve(32);
-        m_vectorPool.push_back(NULL);
-        for (uint n = 1; n < 32; ++n) m_vectorPool.push_back(new BasicBitPackedVector(n));
-
-        m_vectors.reserve(32);
-        m_prefixSums.reserve(32);
-
-        m_activeVector = m_vectorPool[baseEncoding];
-        m_vectors.push_back(m_activeVector);
-        m_prefixSums.push_back(0);
-        m_prefixSums.push_back(0);
-
-    }
-
+/**
+ * @brief Get-implementation using the prefix-sum.
+ */
+class PartitionedBitPackedVector_Get_1 : public BasicPartitionedVector {
 public:
-    BasicPartitionedVector() : m_size(0) {
-        initializeFirstPartition(1);
-    }
-    BasicPartitionedVector(uint baseEncoding) : m_size(0) {
-        initializeFirstPartition(baseEncoding);
-    }
-    ~BasicPartitionedVector() {
-        for (uint n = 0; n < m_vectorPool.size(); ++n) {
-            if (m_vectorPool[n] != NULL) delete m_vectorPool[n];
-        }
-    }
-
-    void setEncodingBits(uint bits) {
-        if (bits > m_bits) {
-            m_activeVector = m_vectorPool[bits];
-            m_vectors.push_back(m_vectorPool[bits]);
-            m_prefixSums.push_back(m_prefixSums.back());
-            m_bits = bits;
-            //printf("New Partition (Should: %u, Has: %u)\n", m_activeVector->bits(), m_activeVector->bits());
-        }
-    }
-
-    void push_back(const uint value) {
-        m_activeVector->push_back(value);
-        m_prefixSums.back()++;
-    }
-
-
-    uint get(size_t index) {
-        for (auto it = m_vectors.begin(); it != m_vectors.end(); ++it) {
-            if (index < (*it)->size()) {
-                return (*it)->get(index);
-            } else {
-                index -= (*it)->size();
-            }
-        }
-        throw std::out_of_range("Index out of Bounds!");
-        return 0;
-    }
-
-    uint get(uint bits, uint index) {
-        return m_vectors[bits]->get(index);
-    }
-
-    size_t size() {
-        return m_prefixSums.back();
-    }
-    size_t size(uint bits) {
-        return m_vectors[bits]->size();
-    }
-
-    std::vector<BasicBitPackedVector*>& vectors() {
-        return m_vectors;
-    }
-
-
-
-    void printBits() {
-        for (auto it = m_vectors.begin(); it != m_vectors.end(); ++it) {
-            if ((*it) != NULL && (*it)->size() > 0) {
-                printf("\nVector %u Bits (size: %lu)\n", (*it)->bits(), (*it)->size());
-                (*it)->printBits();
-            }
-        }
-    }
-};
-
-
-
-
-class BasicPartitionedVector_PS1 : public BasicPartitionedVector {
-public:
-    BasicPartitionedVector_PS1() : BasicPartitionedVector() {}
-    BasicPartitionedVector_PS1(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
-
+    PartitionedBitPackedVector_Get_1() : BasicPartitionedVector() {}
+    PartitionedBitPackedVector_Get_1(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
 
     uint get(size_t globalIndex) {
         for (uint n = 0; n < m_vectors.size(); ++n) {
@@ -124,10 +25,14 @@ public:
 };
 
 
-class BasicPartitionedVector_PS2 : public BasicPartitionedVector {
+
+/**
+ * @brief Get-implementation using the prefix-sum starting from back.
+ */
+class PartitionedBitPackedVector_Get_2 : public BasicPartitionedVector {
 public:
-    BasicPartitionedVector_PS2() : BasicPartitionedVector() {}
-    BasicPartitionedVector_PS2(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
+    PartitionedBitPackedVector_Get_2() : BasicPartitionedVector() {}
+    PartitionedBitPackedVector_Get_2(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
 
     uint get(size_t globalIndex) {
         for (uint n = m_vectors.size() - 1; n >= 0; --n) {
@@ -141,10 +46,14 @@ public:
 };
 
 
-class BasicPartitionedVector_PS3 : public BasicPartitionedVector {
+
+/**
+ * @brief Get-implementation using the prefix-sum starting from back with a single loop and no inner branches.
+ */
+class PartitionedBitPackedVector_Get_3 : public BasicPartitionedVector {
 public:
-    BasicPartitionedVector_PS3() : BasicPartitionedVector() {}
-    BasicPartitionedVector_PS3(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
+    PartitionedBitPackedVector_Get_3() : BasicPartitionedVector() {}
+    PartitionedBitPackedVector_Get_3(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
 
     uint get(size_t globalIndex) {
         uint n = m_vectors.size() - 1;
@@ -161,12 +70,16 @@ public:
 
 
 
-#ifdef __GNUC__
 
-class BasicPartitionedVector_BitShift : public BasicPartitionedVector {
+
+#ifdef __GNUC__
+/**
+ * @brief Get-implementation using bitshifts and popcnt.
+ */
+class PartitionedBitPackedVector_popcnt : public BasicPartitionedVector {
 public:
-    BasicPartitionedVector_BitShift() : BasicPartitionedVector() {}
-    BasicPartitionedVector_BitShift(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
+    PartitionedBitPackedVector_BitShift() : BasicPartitionedVector() {}
+    PartitionedBitPackedVector_BitShift(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
 
     uint get(size_t globalIndex) {
         // Bitmap Implementation
@@ -216,15 +129,8 @@ public:
         vecIndex[0] = 16 - 1 - vecIndex[0] - vecIndex[1];
         return m_vectors[vecIndex[0]]->get(locals[vecIndex[0]]);
         //*/
-
-
     }
 };
 #endif
-
-
-
-typedef	BasicPartitionedVector_PS3	PartitionedBitPackedVector;
-
 
 #endif

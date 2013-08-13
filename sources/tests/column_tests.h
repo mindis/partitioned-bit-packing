@@ -4,7 +4,7 @@
 #include "database/Column.h"
 #include "vectors/BasicBitPackedVector.h"
 #include "vectors/DynamicBitPackedVector.h"
-#include "vectors/PartitionedBitPackedVector.h"
+#include "vectors/PartitionedBitPackedVectors.h"
 
 bool abstract_column_test(const char* test_name, AbstractColumn<long>* v, size_t distinct_values, bool expect_fail = false) {
     const size_t num_elements = 10000;
@@ -39,7 +39,10 @@ bool run_column_tests() {
 
     abstract_column_test("BPV", new Column<BasicBitPackedVector, long>(8), 200);
     abstract_column_test("D-BPV", new Column<DynamicBitPackedVector, long>(2), 200);
-    abstract_column_test("P-BPV", new Column<PartitionedBitPackedVector, long>(2), 200);
+    abstract_column_test("Basic-Partitioned", new Column<BasicPartitionedVector, long>(2), 200);
+    abstract_column_test("Partitioned Get 1", new Column<PartitionedBitPackedVector_Get_1, long>(2), 200);
+    abstract_column_test("Partitioned Get 2", new Column<PartitionedBitPackedVector_Get_2, long>(2), 200);
+    abstract_column_test("Partitioned Get 3", new Column<PartitionedBitPackedVector_Get_3, long>(2), 200);
 
     if (ok) printf("All column tests passed!\n\n");
     else printf("Some column tests failed!\n\n");
