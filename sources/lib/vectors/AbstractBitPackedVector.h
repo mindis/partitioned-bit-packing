@@ -1,6 +1,7 @@
 #ifndef ABSTRACT_BIT_PACKED_VECTOR_H_
 #define ABSTRACT_BIT_PACKED_VECTOR_H_
 
+#include <stdlib.h>
 #include "win_defines.h"
 
 class AbstractBitPackedVector {

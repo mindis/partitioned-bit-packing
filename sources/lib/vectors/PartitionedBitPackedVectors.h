@@ -78,8 +78,8 @@ public:
  */
 class PartitionedBitPackedVector_popcnt : public BasicPartitionedVector {
 public:
-    PartitionedBitPackedVector_BitShift() : BasicPartitionedVector() {}
-    PartitionedBitPackedVector_BitShift(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
+    PartitionedBitPackedVector_popcnt() : BasicPartitionedVector() {}
+    PartitionedBitPackedVector_popcnt(uint baseEncoding) : BasicPartitionedVector(baseEncoding) {}
 
     uint get(size_t globalIndex) {
         // Bitmap Implementation
