@@ -18,7 +18,7 @@ bool abstract_column_test(const char* test_name, AbstractColumn<long>* v, size_t
     bool ok = true;
     for (size_t n = 0; n < num_elements; ++n) {
         if (data[n] != v->get(n)) {
-            if (!expect_fail) printf("Error: Pos %u, Expected %u, Got %u\n", n, data[n], v->get(n));
+            if (!expect_fail) printf("Error: Pos %lu, Expected %u, Got %u\n", n, data[n], v->get(n));
             ok = false;
             break;
         }
