@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "vectors/AbstractBitPackedVector.h"
-#include "utils/utils.h"
+// #include "utils/utils.h"
 
 
 // 32 bit size
