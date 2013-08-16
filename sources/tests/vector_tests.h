@@ -53,7 +53,7 @@ bool dynamic_vector_test(const char* test_name, AbstractBitPackedVector* v) {
     bool ok = true;
     for (size_t n = 0; n < num_elements; ++n) {
         if (data[n] != v->get(n)) {
-            printf("Error: Pos %u, Expected %u, Got %u\n", n, data[n], v->get(n));
+            printf("Error: Pos %lu, Expected %u, Got %u\n", n, data[n], v->get(n));
             ok = false;
             break;
         }
