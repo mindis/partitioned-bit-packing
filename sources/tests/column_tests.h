@@ -9,7 +9,7 @@
 bool abstract_column_test(const char* test_name, AbstractColumn<long>* v, size_t distinct_values, bool expect_fail = false) {
     const size_t num_elements = 10000;
 
-    uint data[num_elements];
+    long data[num_elements];
     for (size_t n = 0; n < num_elements; ++n) {
         data[n] = rand() % distinct_values;
         v->push_back(data[n]);
