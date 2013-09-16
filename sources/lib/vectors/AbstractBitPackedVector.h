@@ -2,7 +2,7 @@
 #define ABSTRACT_BIT_PACKED_VECTOR_H_
 
 #include <stdlib.h>
-#include "win_defines.h"
+#include "os_defines.h"
 
 class AbstractBitPackedVector {
 public:

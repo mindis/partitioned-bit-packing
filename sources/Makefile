@@ -1,11 +1,16 @@
 
 CXX = g++
 INCLUDES = -I./lib/ -I./
-LIBS = -lpapi
+LIBS = 
 CFLAGS = -std=c++0x -O3 -Wall -mssse3 -msse4.1
 
 TARGET = ./partitionedvector
 OBJ = main.o lib/vectors/BasicBitPackedVector.o lib/vectors/BasicPartitionedVector.o lib/vectors/DynamicBitPackedVector.o
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+    LIBS += -lpapi
+endif
 
 
 all: run
@@ -21,11 +26,11 @@ valgrind: debug
 	valgrind --leak-check=full $(TARGET)
 
 clean:
-	rm $(TARGET) -f
-	rm $(OBJ) -f
+	rm -f $(TARGET)
+	rm -f $(OBJ)
 
 build: _build_no_clean
-	rm $(OBJ) -f
+	rm -f $(OBJ)
 
 _build_no_clean: $(OBJ)
 	$(CXX) $(CFLAGS) -o $(TARGET) $(OBJ) $(LIBS)

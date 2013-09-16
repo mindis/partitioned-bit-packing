@@ -1,7 +1,7 @@
 #ifndef ABSTRACT_COLUMN_H_
 #define ABSTRACT_COLUMN_H_
 
-#include "win_defines.h"
+#include "os_defines.h"
 
 template <typename _T_VALUE>
 class AbstractColumn {
