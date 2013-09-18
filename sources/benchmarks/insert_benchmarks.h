@@ -111,8 +111,6 @@ void run_insert_benchmarks() {
 				partitioned_inserts(num_elements, distinct_values));
 		}
 	}
-
-
 }
 
 

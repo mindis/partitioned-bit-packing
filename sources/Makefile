@@ -5,7 +5,7 @@ LIBS =
 CFLAGS = -std=c++0x -O3 -Wall -mssse3 -msse4.1
 
 TARGET = ./partitionedvector
-OBJ = main.o lib/vectors/BasicBitPackedVector.o lib/vectors/BasicPartitionedVector.o lib/vectors/DynamicBitPackedVector.o
+OBJ = main.o lib/vectors/BasicBitPackedVector.o lib/vectors/BasicPartitionedVector.o lib/vectors/DynamicBitPackedVector.o lib/utils/data_generation.o
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)

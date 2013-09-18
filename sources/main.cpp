@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "tests/vector_tests.h"
 #include "tests/column_tests.h"
+#include "tests/data_generation_tests.h"
 #include "benchmarks/insert_benchmarks.h"
 
 
@@ -11,8 +12,9 @@ int main(int argc, char* argv[]) {
     
     run_vector_tests();
     run_column_tests();
+    run_data_generation_tests();
 
-    run_insert_benchmarks();
+    // run_insert_benchmarks();
 
 
 
