@@ -7,8 +7,8 @@ In this repository you'll find implementations of a normal bit-packed vector and
 
 OS Support:
  * Mac OSX (Build System: GCC 4.8)
- * Linux (Build System: GCC 4.8, currently untested)
- * Windows (Build System: Visual Studio, currently untested)
+ * Linux (Build System: GCC 4.8, currentl build untested)
+ * Windows (Build System: Visual Studio, current build untested)
 
 Dependencies:
  * (Optional) PAPI (http://icl.cs.utk.edu/papi/) is recommended for benchmarking. The benchmarks can run without PAPI, but it is recommended to do benchmarks on a Linux-OS using PAPI to measure the performance.
