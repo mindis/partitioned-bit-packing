@@ -7,7 +7,7 @@ In this repository you'll find implementations of a normal bit-packed vector and
 
 OS Support:
  * Mac OSX (Build System: GCC 4.8)
- * Linux (Build System: GCC 4.8, currentl build untested)
+ * Linux (Build System: GCC 4.8, current build untested)
  * Windows (Build System: Visual Studio, current build untested)
 
 Dependencies:
