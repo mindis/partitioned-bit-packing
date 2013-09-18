@@ -18,8 +18,9 @@ private:
     uint m_bits, m_bitValues;
 
 public:
-    Dictionary() : m_distinctValues(0), m_bits(0) {}
+    Dictionary() : m_distinctValues(0), m_bits(1), m_bitValues(2) {}
     Dictionary(uint startBits) : m_distinctValues(0) {
+        if (startBits < 1) printf("Start bits of a dictionary is not supposed to be less than 1!");
         m_bits = startBits;
         m_bitValues = uint(pow(2, m_bits));
     }
