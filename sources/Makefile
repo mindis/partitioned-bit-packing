@@ -1,16 +1,31 @@
 
+USE_PAPI := 0
+USE_BCV := 1
+
+
 CXX = g++
-INCLUDES = -I./lib/ -I./
+INCLUDES = -I./lib/ -I./ -I/lib/bcv/pkg/
 LIBS = 
-CFLAGS = -std=c++0x -O3 -Wall -mssse3 -msse4.1
+CFLAGS = -std=c++0x -O3 -mssse3 -msse4.1 -Wall
 
 TARGET = ./partitionedvector
-OBJ = main.o lib/vectors/BasicBitPackedVector.o lib/vectors/BasicPartitionedVector.o lib/vectors/DynamicBitPackedVector.o lib/utils/data_generation.o
+OBJ = main.o lib/vectors/BasicBitPackedVector.o lib/vectors/BasicPartitionedVector.o lib/vectors/DynamicBitPackedVector.o lib/vectors/BitPackedVectorSIMD.o lib/utils/data_generation.o
 
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
+
+
+ifeq ($(USE_PAPI),1)
     LIBS += -lpapi
+    CFLAGS += -D WITH_PAPI
 endif
+
+ifeq ($(USE_BCV),1)
+    CFLAGS += -D WITH_BCV -Wno-unused-variable -Wno-reorder
+endif
+
+
+
+
+
 
 
 all: run
