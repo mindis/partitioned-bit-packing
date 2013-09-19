@@ -9,7 +9,7 @@ LIBS =
 CFLAGS = -std=c++0x -O3 -mssse3 -msse4.1 -Wall
 
 TARGET = ./partitionedvector
-OBJ = main.o lib/vectors/BasicBitPackedVector.o lib/vectors/BasicPartitionedVector.o lib/vectors/DynamicBitPackedVector.o lib/vectors/BitPackedVectorSIMD.o lib/utils/data_generation.o
+OBJ = main.o lib/vectors/BasicBitPackedVector.o lib/vectors/BasicPartitionedVector.o lib/vectors/DynamicBitPackedVector.o lib/utils/data_generation.o
 
 
 

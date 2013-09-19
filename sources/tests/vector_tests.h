@@ -9,7 +9,7 @@
 #include "vectors/BitPackedVectorSIMD.h"
 
 
-bool abstract_vector_test(const char* test_name, AbstractBitPackedVector* v, size_t distinct_values, bool expect_ok = true) {
+bool abstract_vector_test(const char* test_name, AbstractVector* v, size_t distinct_values, bool expect_ok = true) {
     const size_t num_elements = 10000;
 
     uint data[num_elements];
@@ -87,6 +87,9 @@ bool run_vector_tests() {
     ok &= abstract_vector_test("BCV-Adapter (1)", new BitCompressedVectorAdapter<14>(), 10000);
     ok &= abstract_vector_test("BCV-Adapter (2)", new BitCompressedVectorAdapter<4>(), 10);
     ok &= abstract_vector_test("BCV-Adapter (3)", new BitCompressedVectorAdapter<6>(), 1000, false);
+    ok &= abstract_vector_test("SIMD-Vector (1)", new BitPackedVectorSIMD(14), 10000);
+    ok &= abstract_vector_test("SIMD-Vector (2)", new BitPackedVectorSIMD(4), 10);
+    ok &= abstract_vector_test("SIMD-Vector (3)", new BitPackedVectorSIMD(6), 1000, false);
 #endif
 
     if (ok) printf("All vector tests passed!\n\n");

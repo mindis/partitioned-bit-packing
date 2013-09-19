@@ -3,8 +3,9 @@
 
 #include <stdlib.h>
 #include "os_defines.h"
+#include "AbstractVector.h"
 
-class AbstractBitPackedVector {
+class AbstractBitPackedVector : public AbstractVector {
 public:
 	virtual ~AbstractBitPackedVector() {}
     virtual void push_back(const uint) = 0;
