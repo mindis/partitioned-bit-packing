@@ -58,7 +58,10 @@ std::vector<BasicBitPackedVector*>& BasicPartitionedVector::vectors() {
 }
 
 void BasicPartitionedVector::initializeFirstPartition(uint baseEncoding) {
-    if (baseEncoding < 1) printf("Stupid! BaseEncoding can't be less than 1!!!");
+    if (baseEncoding < 1) {
+        baseEncoding = 1;
+        printf("BaseEncoding can't be less than 1 (%u)! It has been automatically set to 1.\n", baseEncoding);
+    }
     m_bits = baseEncoding;
 
     m_vectorPool.reserve(32);
