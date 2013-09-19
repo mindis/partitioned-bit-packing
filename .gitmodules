@@ -1,3 +1,3 @@
-[submodule "sources/lib/submodules/bcv"]
-	path = sources/lib/submodules/bcv
+[submodule "sources/lib/bcv"]
+	path = sources/lib/bcv
 	url = git@github.com:torpedro/bitcompressedvector.git
