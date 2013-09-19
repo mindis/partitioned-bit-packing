@@ -6,6 +6,7 @@
 #include "vectors/DynamicBitPackedVector.h"
 #include "vectors/BasicPartitionedVector.h"
 #include "vectors/PartitionedBitPackedVectors.h"
+#include "vectors/BitPackedVectorSIMD.h"
 
 
 bool abstract_vector_test(const char* test_name, AbstractBitPackedVector* v, size_t distinct_values, bool expect_ok = true) {
@@ -75,11 +76,18 @@ bool run_vector_tests() {
     ok &= abstract_vector_test("BPV (4)", new BasicBitPackedVector(24), 1000000);
     ok &= abstract_vector_test("D-BPV (1)", new DynamicBitPackedVector(10), 1000);
     ok &= abstract_vector_test("P-BPV (1)", new BasicPartitionedVector(14), 10000);
+
     ok &= dynamic_vector_test("D-BPV (1)", new DynamicBitPackedVector(10));
     ok &= dynamic_vector_test("Basic-Partitioned", new BasicPartitionedVector(5));
     ok &= dynamic_vector_test("Partitioned Get 1", new PartitionedBitPackedVector_Get_1(5));
     ok &= dynamic_vector_test("Partitioned Get 2", new PartitionedBitPackedVector_Get_2(5));
     ok &= dynamic_vector_test("Partitioned Get 3", new PartitionedBitPackedVector_Get_3(5));
+
+#ifdef WITH_BCV
+    ok &= abstract_vector_test("BCV-Adapter (1)", new BitCompressedVectorAdapter<14>(), 10000);
+    ok &= abstract_vector_test("BCV-Adapter (2)", new BitCompressedVectorAdapter<4>(), 10);
+    ok &= abstract_vector_test("BCV-Adapter (3)", new BitCompressedVectorAdapter<6>(), 1000, false);
+#endif
 
     if (ok) printf("All vector tests passed!\n\n");
     else printf("Some vector tests failed!\n\n");
