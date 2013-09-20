@@ -7,6 +7,7 @@
 
 #include "bcv/bcv.h"
 #include "vectors/AbstractVector.h"
+#include "vectors/AbstractBitPackedVector.h"
 
 template<uint64_t _BITS>
 class BitCompressedVectorAdapter : public AbstractVector {
