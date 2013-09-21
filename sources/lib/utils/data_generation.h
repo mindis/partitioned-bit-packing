@@ -2,6 +2,7 @@
 #define DATA_GENERATION_H_
 
 #include <stdlib.h>
+#include "os_defines.h"
 
 namespace utils {
 	void fast_srand(int seed);
@@ -14,11 +15,11 @@ namespace utils {
 
 class UniformGenerator {
 public:
-	static long single(long from, long to) {
+	static uint single(uint from, uint to) {
 		return from + utils::fastrand() % (to-from + 1);
 	}
-	static long* multiple(long from, long to, size_t size) {
-		long* array = new long[size];
+	static uint* multiple(uint from, uint to, size_t size) {
+		uint* array = new uint[size];
 		for (size_t n = 0; n < size; ++n) array[n] = UniformGenerator::single(from, to);
 		return array;
 	}

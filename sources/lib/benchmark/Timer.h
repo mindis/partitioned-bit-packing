@@ -1,22 +1,22 @@
-#ifndef TIME_BENCHMARKER_H_
-#define TIME_BENCHMARKER_H_
+#ifndef TIMER_H_
+#define TIMER_H_
 
 
 #include <sys/time.h>
 
-class TimeBenchmarker {
+class Timer {
 public:
 	static long run_ms(void (*fn)()) {
-		TimeBenchmarker timer = TimeBenchmarker(fn);
+		Timer timer = Timer(fn);
 		return timer.milliseconds();
 	}
 
-	TimeBenchmarker() : m_hasFinished(false) {}
-	TimeBenchmarker(bool doStart) : m_hasFinished(false) {
+	Timer() : m_hasFinished(false) {}
+	Timer(bool doStart) : m_hasFinished(false) {
 		if (doStart) start();
 	}
 
-	TimeBenchmarker(void (*fn)()) : m_hasFinished(false) {
+	Timer(void (*fn)()) : m_hasFinished(false) {
 		start();
 		fn();
 		stop();

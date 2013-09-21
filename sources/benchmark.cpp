@@ -1,12 +1,13 @@
 
 
 #include <stdio.h>
+#include "benchmarks/insert_benchmarks.h"
 
 int main(int argc, char* argv[]) {
     printf("Program started.\n\n");
 
-    // run_insert_benchmarks();
 
+    run_insert_benchmarks();
 
 
     printf("\n\nProgram finished.\n");

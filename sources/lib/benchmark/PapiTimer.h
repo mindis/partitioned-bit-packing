@@ -1,5 +1,5 @@
-#ifndef PAPI_BENCHMARKER_H_
-#define PAPI_BENCHMARKER_H_
+#ifndef PAPI_TIMER_H_
+#define PAPI_TIMER_H_
 
 
 
@@ -7,9 +7,9 @@
 
 #include <papi.h>
 
-class PapiBenchmarker {
+class PapiTimer {
 public:
-	PapiBenchmarker() {
+	PapiTimer() {
 
 	}
 
@@ -43,7 +43,7 @@ public:
 
 };
 
-typedef DummyPapiBenchmarker PapiBenchmarker;
+typedef DummyPapiBenchmarker PapiTimer;
 
 
 #endif
