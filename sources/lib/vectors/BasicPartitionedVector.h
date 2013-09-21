@@ -1,5 +1,5 @@
-#ifndef PARTITIONED_BIT_VECTORS_H_
-#define PARTITIONED_BIT_VECTORS_H_
+#ifndef BASIC_PARTITIONED_VECTOR_H_
+#define BASIC_PARTITIONED_VECTOR_H_
 
 #include <stdexcept>
 #include <algorithm>
