@@ -264,6 +264,7 @@ public:
 };
 
 
+#include "BitPackedVectorSIMD2.h"
 
 
 
