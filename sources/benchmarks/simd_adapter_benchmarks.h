@@ -86,30 +86,31 @@ public:
 
 void run_simd_adapter_benchmarks() {
 	const int runs = 5;
-	int distinct_values = 1000,
-	    num_elements = 20000000;
+	int distinct_values = 1000;
 
-    uint* data[runs];
-    for (uint n = 0; n < runs; ++n) {
-        data[n] = UniformGenerator::multiple(1, distinct_values, num_elements);
+    printf("#\tBCV\tBCV-A\tSIMD\n");
+
+    for (uint num_elements = 100000; num_elements <= 100000000; num_elements *= 10) {
+        uint* data[runs];
+        for (uint n = 0; n < runs; ++n) {
+            data[n] = UniformGenerator::multiple(1, distinct_values, num_elements);
+        }
+
+        BCVInsertBenchmark_ bcv(runs, num_elements, data);
+        BCVAdapterInsertBenchmark_ bcva(runs, num_elements, data);
+        SIMDVectorInsertBenchmark_ simd(runs, num_elements, data);
+
+        bcva.runBenchmark();
+        bcv.runBenchmark();
+        simd.runBenchmark();
+
+        printf("%uk\t%.2f\t%.2f\t%.2f\n", num_elements/1000, bcv.avg(), bcva.avg(), simd.avg());
+
+        for (uint n = 0; n < runs; ++n) {
+            delete[] data[n];
+        }
     }
-
-    BCVInsertBenchmark_ bcv(runs, num_elements, data);
-    BCVAdapterInsertBenchmark_ bcva(runs, num_elements, data);
-    SIMDVectorInsertBenchmark_ simd(runs, num_elements, data);
-    SIMDVector2InsertBenchmark_ simd2(runs, num_elements, data);
-
-    bcva.runBenchmark();
-
-    bcv.runBenchmark();
-    simd.runBenchmark();
-    simd2.runBenchmark();
-
-
-    printf("%.2f\t%.2f\t%.2f\t%.2f\n", bcv.avg(), bcva.avg(), simd.avg(), simd2.avg());
 }
-
-
 
 
 
