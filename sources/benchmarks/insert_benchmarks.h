@@ -2,13 +2,16 @@
 #define INSERT_BENCHMARKS_H_
 
 
+#include "benchmark/Benchmarker.h"
+#include "benchmark/Timer.h"
+
 #include "vectors/BitPackedVectorSIMD.h"
 #include "vectors/PartitionedVectorTemplate.h"
 #include "vectors/PartitionedBitPackedVectors.h"
-#include "benchmark/Timer.h"
+
 #include "database/Dictionary.h"
+
 #include "utils/utils.h"
-#include "benchmark/Benchmarker.h"
 #include "utils/data_generation.h"
 
 

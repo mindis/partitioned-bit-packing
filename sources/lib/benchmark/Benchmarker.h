@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <vector>
+#include "os_defines.h"
 #include "utils/utils.h"
 
 template<typename _RESULT>
