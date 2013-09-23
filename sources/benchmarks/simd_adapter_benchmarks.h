@@ -85,9 +85,9 @@ public:
 
 
 void run_simd_adapter_benchmarks() {
-	const int runs = 10;
+	const int runs = 5;
 	int distinct_values = 1000,
-	    num_elements = 100000000;
+	    num_elements = 20000000;
 
     uint* data[runs];
     for (uint n = 0; n < runs; ++n) {
@@ -99,9 +99,9 @@ void run_simd_adapter_benchmarks() {
     SIMDVectorInsertBenchmark_ simd(runs, num_elements, data);
     SIMDVector2InsertBenchmark_ simd2(runs, num_elements, data);
 
+    bcva.runBenchmark();
 
     bcv.runBenchmark();
-    bcva.runBenchmark();
     simd.runBenchmark();
     simd2.runBenchmark();
 

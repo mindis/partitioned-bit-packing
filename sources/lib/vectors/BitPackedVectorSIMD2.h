@@ -79,278 +79,145 @@ public:
 	inline uint bits() { return m_bits; }
 
 	uint get(const size_t index) {
-		switch (m_bits) {
-		  case 1:
-			return m_vector1.get(index);
-		  case 2:
-			return m_vector2.get(index);
-		  case 3:
-			return m_vector3.get(index);
-		  case 4:
-			return m_vector4.get(index);
-		  case 5:
-			return m_vector5.get(index);
-		  case 6:
-			return m_vector6.get(index);
-		  case 7:
-			return m_vector7.get(index);
-		  case 8:
-			return m_vector8.get(index);
-		  case 9:
-			return m_vector9.get(index);
-		  case 10:
-			return m_vector10.get(index);
-		  case 11:
-			return m_vector11.get(index);
-		  case 12:
-			return m_vector12.get(index);
-		  case 13:
-			return m_vector13.get(index);
-		  case 14:
-			return m_vector14.get(index);
-		  case 15:
-			return m_vector15.get(index);
-		  case 16:
-			return m_vector16.get(index);
-		  case 17:
-			return m_vector17.get(index);
-		  case 18:
-			return m_vector18.get(index);
-		  case 19:
-			return m_vector19.get(index);
-		  case 20:
-			return m_vector20.get(index);
-		  case 21:
-			return m_vector21.get(index);
-		  case 22:
-			return m_vector22.get(index);
-		  case 23:
-			return m_vector23.get(index);
-		  case 24:
-			return m_vector24.get(index);
-		  case 25:
-			return m_vector25.get(index);
-		  case 26:
-			return m_vector26.get(index);
-		  case 27:
-			return m_vector27.get(index);
-		  case 28:
-			return m_vector28.get(index);
-		  case 29:
-			return m_vector29.get(index);
-		  case 30:
-			return m_vector30.get(index);
-		  case 31:
-			return m_vector31.get(index);
-		  case 32:
-			return m_vector32.get(index);
-		  case 33:
-			return m_vector33.get(index);
-		  case 34:
-			return m_vector34.get(index);
-		  case 35:
-			return m_vector35.get(index);
-		  case 36:
-			return m_vector36.get(index);
-		  case 37:
-			return m_vector37.get(index);
-		  case 38:
-			return m_vector38.get(index);
-		  case 39:
-			return m_vector39.get(index);
-		  case 40:
-			return m_vector40.get(index);
-		  case 41:
-			return m_vector41.get(index);
-		  case 42:
-			return m_vector42.get(index);
-		  case 43:
-			return m_vector43.get(index);
-		  case 44:
-			return m_vector44.get(index);
-		  case 45:
-			return m_vector45.get(index);
-		  case 46:
-			return m_vector46.get(index);
-		  case 47:
-			return m_vector47.get(index);
-		  case 48:
-			return m_vector48.get(index);
-		  case 49:
-			return m_vector49.get(index);
-		  case 50:
-			return m_vector50.get(index);
-		  case 51:
-			return m_vector51.get(index);
-		  case 52:
-			return m_vector52.get(index);
-		  case 53:
-			return m_vector53.get(index);
-		  case 54:
-			return m_vector54.get(index);
-		  case 55:
-			return m_vector55.get(index);
-		  case 56:
-			return m_vector56.get(index);
-		  case 57:
-			return m_vector57.get(index);
-		  case 58:
-			return m_vector58.get(index);
-		  case 59:
-			return m_vector59.get(index);
-		  case 60:
-			return m_vector60.get(index);
-		  case 61:
-			return m_vector61.get(index);
-		  case 62:
-			return m_vector62.get(index);
-		  case 63:
-			return m_vector63.get(index);
-		  case 64:
-			return m_vector64.get(index);
+		if (m_bits == 1) { return m_vector1.get(index); }
+		if (m_bits == 2) { return m_vector2.get(index); }
+		if (m_bits == 3) { return m_vector3.get(index); }
+		if (m_bits == 4) { return m_vector4.get(index); }
+		if (m_bits == 5) { return m_vector5.get(index); }
+		if (m_bits == 6) { return m_vector6.get(index); }
+		if (m_bits == 7) { return m_vector7.get(index); }
+		if (m_bits == 8) { return m_vector8.get(index); }
+		if (m_bits == 9) { return m_vector9.get(index); }
+		if (m_bits == 10) { return m_vector10.get(index); }
+		if (m_bits == 11) { return m_vector11.get(index); }
+		if (m_bits == 12) { return m_vector12.get(index); }
+		if (m_bits == 13) { return m_vector13.get(index); }
+		if (m_bits == 14) { return m_vector14.get(index); }
+		if (m_bits == 15) { return m_vector15.get(index); }
+		if (m_bits == 16) { return m_vector16.get(index); }
+		if (m_bits == 17) { return m_vector17.get(index); }
+		if (m_bits == 18) { return m_vector18.get(index); }
+		if (m_bits == 19) { return m_vector19.get(index); }
+		if (m_bits == 20) { return m_vector20.get(index); }
+		if (m_bits == 21) { return m_vector21.get(index); }
+		if (m_bits == 22) { return m_vector22.get(index); }
+		if (m_bits == 23) { return m_vector23.get(index); }
+		if (m_bits == 24) { return m_vector24.get(index); }
+		if (m_bits == 25) { return m_vector25.get(index); }
+		if (m_bits == 26) { return m_vector26.get(index); }
+		if (m_bits == 27) { return m_vector27.get(index); }
+		if (m_bits == 28) { return m_vector28.get(index); }
+		if (m_bits == 29) { return m_vector29.get(index); }
+		if (m_bits == 30) { return m_vector30.get(index); }
+		if (m_bits == 31) { return m_vector31.get(index); }
+		if (m_bits == 32) { return m_vector32.get(index); }
+		if (m_bits == 33) { return m_vector33.get(index); }
+		if (m_bits == 34) { return m_vector34.get(index); }
+		if (m_bits == 35) { return m_vector35.get(index); }
+		if (m_bits == 36) { return m_vector36.get(index); }
+		if (m_bits == 37) { return m_vector37.get(index); }
+		if (m_bits == 38) { return m_vector38.get(index); }
+		if (m_bits == 39) { return m_vector39.get(index); }
+		if (m_bits == 40) { return m_vector40.get(index); }
+		if (m_bits == 41) { return m_vector41.get(index); }
+		if (m_bits == 42) { return m_vector42.get(index); }
+		if (m_bits == 43) { return m_vector43.get(index); }
+		if (m_bits == 44) { return m_vector44.get(index); }
+		if (m_bits == 45) { return m_vector45.get(index); }
+		if (m_bits == 46) { return m_vector46.get(index); }
+		if (m_bits == 47) { return m_vector47.get(index); }
+		if (m_bits == 48) { return m_vector48.get(index); }
+		if (m_bits == 49) { return m_vector49.get(index); }
+		if (m_bits == 50) { return m_vector50.get(index); }
+		if (m_bits == 51) { return m_vector51.get(index); }
+		if (m_bits == 52) { return m_vector52.get(index); }
+		if (m_bits == 53) { return m_vector53.get(index); }
+		if (m_bits == 54) { return m_vector54.get(index); }
+		if (m_bits == 55) { return m_vector55.get(index); }
+		if (m_bits == 56) { return m_vector56.get(index); }
+		if (m_bits == 57) { return m_vector57.get(index); }
+		if (m_bits == 58) { return m_vector58.get(index); }
+		if (m_bits == 59) { return m_vector59.get(index); }
+		if (m_bits == 60) { return m_vector60.get(index); }
+		if (m_bits == 61) { return m_vector61.get(index); }
+		if (m_bits == 62) { return m_vector62.get(index); }
+		if (m_bits == 63) { return m_vector63.get(index); }
+		if (m_bits == 64) { return m_vector64.get(index); }
 
-		}
 		return 0;
 	}
 
 	void push_back(uint val) {
-		switch (m_bits) {
-		  case 1:
-			m_vector1.push_back(val); break;
-		  case 2:
-			m_vector2.push_back(val); break;
-		  case 3:
-			m_vector3.push_back(val); break;
-		  case 4:
-			m_vector4.push_back(val); break;
-		  case 5:
-			m_vector5.push_back(val); break;
-		  case 6:
-			m_vector6.push_back(val); break;
-		  case 7:
-			m_vector7.push_back(val); break;
-		  case 8:
-			m_vector8.push_back(val); break;
-		  case 9:
-			m_vector9.push_back(val); break;
-		  case 10:
-			m_vector10.push_back(val); break;
-		  case 11:
-			m_vector11.push_back(val); break;
-		  case 12:
-			m_vector12.push_back(val); break;
-		  case 13:
-			m_vector13.push_back(val); break;
-		  case 14:
-			m_vector14.push_back(val); break;
-		  case 15:
-			m_vector15.push_back(val); break;
-		  case 16:
-			m_vector16.push_back(val); break;
-		  case 17:
-			m_vector17.push_back(val); break;
-		  case 18:
-			m_vector18.push_back(val); break;
-		  case 19:
-			m_vector19.push_back(val); break;
-		  case 20:
-			m_vector20.push_back(val); break;
-		  case 21:
-			m_vector21.push_back(val); break;
-		  case 22:
-			m_vector22.push_back(val); break;
-		  case 23:
-			m_vector23.push_back(val); break;
-		  case 24:
-			m_vector24.push_back(val); break;
-		  case 25:
-			m_vector25.push_back(val); break;
-		  case 26:
-			m_vector26.push_back(val); break;
-		  case 27:
-			m_vector27.push_back(val); break;
-		  case 28:
-			m_vector28.push_back(val); break;
-		  case 29:
-			m_vector29.push_back(val); break;
-		  case 30:
-			m_vector30.push_back(val); break;
-		  case 31:
-			m_vector31.push_back(val); break;
-		  case 32:
-			m_vector32.push_back(val); break;
-		  case 33:
-			m_vector33.push_back(val); break;
-		  case 34:
-			m_vector34.push_back(val); break;
-		  case 35:
-			m_vector35.push_back(val); break;
-		  case 36:
-			m_vector36.push_back(val); break;
-		  case 37:
-			m_vector37.push_back(val); break;
-		  case 38:
-			m_vector38.push_back(val); break;
-		  case 39:
-			m_vector39.push_back(val); break;
-		  case 40:
-			m_vector40.push_back(val); break;
-		  case 41:
-			m_vector41.push_back(val); break;
-		  case 42:
-			m_vector42.push_back(val); break;
-		  case 43:
-			m_vector43.push_back(val); break;
-		  case 44:
-			m_vector44.push_back(val); break;
-		  case 45:
-			m_vector45.push_back(val); break;
-		  case 46:
-			m_vector46.push_back(val); break;
-		  case 47:
-			m_vector47.push_back(val); break;
-		  case 48:
-			m_vector48.push_back(val); break;
-		  case 49:
-			m_vector49.push_back(val); break;
-		  case 50:
-			m_vector50.push_back(val); break;
-		  case 51:
-			m_vector51.push_back(val); break;
-		  case 52:
-			m_vector52.push_back(val); break;
-		  case 53:
-			m_vector53.push_back(val); break;
-		  case 54:
-			m_vector54.push_back(val); break;
-		  case 55:
-			m_vector55.push_back(val); break;
-		  case 56:
-			m_vector56.push_back(val); break;
-		  case 57:
-			m_vector57.push_back(val); break;
-		  case 58:
-			m_vector58.push_back(val); break;
-		  case 59:
-			m_vector59.push_back(val); break;
-		  case 60:
-			m_vector60.push_back(val); break;
-		  case 61:
-			m_vector61.push_back(val); break;
-		  case 62:
-			m_vector62.push_back(val); break;
-		  case 63:
-			m_vector63.push_back(val); break;
-		  case 64:
-			m_vector64.push_back(val); break;
+		if (m_bits == 1) { m_vector1.push_back(val); return; }
+		if (m_bits == 2) { m_vector2.push_back(val); return; }
+		if (m_bits == 3) { m_vector3.push_back(val); return; }
+		if (m_bits == 4) { m_vector4.push_back(val); return; }
+		if (m_bits == 5) { m_vector5.push_back(val); return; }
+		if (m_bits == 6) { m_vector6.push_back(val); return; }
+		if (m_bits == 7) { m_vector7.push_back(val); return; }
+		if (m_bits == 8) { m_vector8.push_back(val); return; }
+		if (m_bits == 9) { m_vector9.push_back(val); return; }
+		if (m_bits == 10) { m_vector10.push_back(val); return; }
+		if (m_bits == 11) { m_vector11.push_back(val); return; }
+		if (m_bits == 12) { m_vector12.push_back(val); return; }
+		if (m_bits == 13) { m_vector13.push_back(val); return; }
+		if (m_bits == 14) { m_vector14.push_back(val); return; }
+		if (m_bits == 15) { m_vector15.push_back(val); return; }
+		if (m_bits == 16) { m_vector16.push_back(val); return; }
+		if (m_bits == 17) { m_vector17.push_back(val); return; }
+		if (m_bits == 18) { m_vector18.push_back(val); return; }
+		if (m_bits == 19) { m_vector19.push_back(val); return; }
+		if (m_bits == 20) { m_vector20.push_back(val); return; }
+		if (m_bits == 21) { m_vector21.push_back(val); return; }
+		if (m_bits == 22) { m_vector22.push_back(val); return; }
+		if (m_bits == 23) { m_vector23.push_back(val); return; }
+		if (m_bits == 24) { m_vector24.push_back(val); return; }
+		if (m_bits == 25) { m_vector25.push_back(val); return; }
+		if (m_bits == 26) { m_vector26.push_back(val); return; }
+		if (m_bits == 27) { m_vector27.push_back(val); return; }
+		if (m_bits == 28) { m_vector28.push_back(val); return; }
+		if (m_bits == 29) { m_vector29.push_back(val); return; }
+		if (m_bits == 30) { m_vector30.push_back(val); return; }
+		if (m_bits == 31) { m_vector31.push_back(val); return; }
+		if (m_bits == 32) { m_vector32.push_back(val); return; }
+		if (m_bits == 33) { m_vector33.push_back(val); return; }
+		if (m_bits == 34) { m_vector34.push_back(val); return; }
+		if (m_bits == 35) { m_vector35.push_back(val); return; }
+		if (m_bits == 36) { m_vector36.push_back(val); return; }
+		if (m_bits == 37) { m_vector37.push_back(val); return; }
+		if (m_bits == 38) { m_vector38.push_back(val); return; }
+		if (m_bits == 39) { m_vector39.push_back(val); return; }
+		if (m_bits == 40) { m_vector40.push_back(val); return; }
+		if (m_bits == 41) { m_vector41.push_back(val); return; }
+		if (m_bits == 42) { m_vector42.push_back(val); return; }
+		if (m_bits == 43) { m_vector43.push_back(val); return; }
+		if (m_bits == 44) { m_vector44.push_back(val); return; }
+		if (m_bits == 45) { m_vector45.push_back(val); return; }
+		if (m_bits == 46) { m_vector46.push_back(val); return; }
+		if (m_bits == 47) { m_vector47.push_back(val); return; }
+		if (m_bits == 48) { m_vector48.push_back(val); return; }
+		if (m_bits == 49) { m_vector49.push_back(val); return; }
+		if (m_bits == 50) { m_vector50.push_back(val); return; }
+		if (m_bits == 51) { m_vector51.push_back(val); return; }
+		if (m_bits == 52) { m_vector52.push_back(val); return; }
+		if (m_bits == 53) { m_vector53.push_back(val); return; }
+		if (m_bits == 54) { m_vector54.push_back(val); return; }
+		if (m_bits == 55) { m_vector55.push_back(val); return; }
+		if (m_bits == 56) { m_vector56.push_back(val); return; }
+		if (m_bits == 57) { m_vector57.push_back(val); return; }
+		if (m_bits == 58) { m_vector58.push_back(val); return; }
+		if (m_bits == 59) { m_vector59.push_back(val); return; }
+		if (m_bits == 60) { m_vector60.push_back(val); return; }
+		if (m_bits == 61) { m_vector61.push_back(val); return; }
+		if (m_bits == 62) { m_vector62.push_back(val); return; }
+		if (m_bits == 63) { m_vector63.push_back(val); return; }
+		if (m_bits == 64) { m_vector64.push_back(val); return; }
 	
-		}
 	}
 
 	size_t size() {
 		return 0;
 	}
 };
-
 
 #endif
