@@ -1,5 +1,5 @@
 
-USE_PAPI := 0
+USE_PAPI := 1
 USE_BCV := 1
 
 
@@ -23,7 +23,7 @@ ifeq ($(USE_PAPI),1)
 endif
 
 ifeq ($(USE_BCV),1)
-    CFLAGS += -D WITH_BCV -Wno-unused-variable -Wno-reorder
+    CFLAGS += -D WITH_BCV -Wno-unused-variable -Wno-reorder -Wno-unused-result
 endif
 
 

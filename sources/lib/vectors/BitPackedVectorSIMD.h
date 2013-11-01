@@ -254,9 +254,6 @@ public:
 		case 63:
 			m_vector = std::unique_ptr<AbstractVector>(new BitCompressedVectorAdapter<63>());
 			break;
-		case 64:
-			m_vector = std::unique_ptr<AbstractVector>(new BitCompressedVectorAdapter<64>());
-			break;
 		default:
 			printf("Number of bits not supported!");
 		}
@@ -264,7 +261,45 @@ public:
 };
 
 
-#include "BitPackedVectorSIMD2.h"
+
+class DynamicBitPackedVectorSIMD : public AbstractBitPackedVector {
+public:
+	BitPackedVectorSIMD* m_vector;
+	uint m_bits;
+
+	DynamicBitPackedVectorSIMD(uint bits) {
+		m_vector = new BitPackedVectorSIMD(bits);
+		m_bits = bits;
+	}
+
+	void setEncodingBits(uint bits) {
+		if (bits > m_bits) {
+			BitPackedVectorSIMD* old_vector = m_vector;
+			size_t old_size = old_vector->size();
+
+			m_vector = new BitPackedVectorSIMD(bits);
+			for (uint n = 0; n < old_size; ++n) {
+				m_vector->push_back(old_vector->get(n));
+			}
+
+			m_bits = bits;
+
+			// Garbage Collection: Turn off for benchmark purposes
+			delete old_vector;
+		}
+	}
+
+
+	inline uint get(size_t index)  {
+		return m_vector->get(index);
+	}
+	inline void push_back(const uint value) {
+		m_vector->push_back(value);
+	}
+	inline size_t size() {
+		return m_vector->size();
+	}
+};
 
 
 

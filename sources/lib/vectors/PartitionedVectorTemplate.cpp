@@ -50,15 +50,15 @@ void PartitionedVectorTemplate<_BCV>::push_back(const uint value) {
 
 template<typename _BCV>
 uint PartitionedVectorTemplate<_BCV>::get(size_t index) {
-    for (auto it = m_vectors.begin(); it != m_vectors.end(); ++it) {
-        if (index < (*it)->size()) {
-            return (*it)->get(index);
-        } else {
-            index -= (*it)->size();
-        }
+    // Get implementation from Get_3
+    uint n = m_vectors.size() - 1;
+    uint localIndex = index - m_prefixSums[n];
+
+    for (; index < m_prefixSums[n]; --n) {
+        localIndex = index - m_prefixSums[n-1];
     }
-    throw std::out_of_range("Index out of Bounds!");
-    return 0;
+
+    return m_vectors[n]->get(localIndex);
 }
 
 
@@ -89,6 +89,11 @@ std::vector<_BCV*>& PartitionedVectorTemplate<_BCV>::vectors() {
     return m_vectors;
 }
 
+template<typename _BCV>
+uint PartitionedVectorTemplate<_BCV>::baseEncoding() {
+    return m_baseEncoding;
+}
+
 
 
 template<typename _BCV>
@@ -97,6 +102,7 @@ void PartitionedVectorTemplate<_BCV>::initializeFirstPartition(uint baseEncoding
         baseEncoding = 1;
         printf("BaseEncoding can't be less than 1 (%u)! It has been automatically set to 1.\n", baseEncoding);
     }
+    m_baseEncoding = baseEncoding;
     m_bits = baseEncoding;
 
     m_vectorPool.reserve(32);

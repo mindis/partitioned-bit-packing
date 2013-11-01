@@ -9,30 +9,30 @@
 template<typename _RESULT>
 class Benchmarker {
 public:
-	Benchmarker(uint runs) : m_runs(runs), m_runNr(0) {
+	Benchmarker(uint runs) : _runs(runs), _run_nr(0) {
 
 	}
 
 	virtual _RESULT run() = 0;
 
 	void runBenchmark() {
-		for (uint n = 0; n < m_runs; ++n) {
-			m_results.push_back(run());
-			m_runNr++;
+		for (uint n = 0; n < _runs; ++n) {
+			_results.push_back(run());
+			_run_nr++;
 		}
 	}
 
-	std::vector<_RESULT>& results() { return m_results; }
+	std::vector<_RESULT>& results() { return _results; }
 
-	void clearResults() { m_results.clear(); }
+	void clearResults() { _results.clear(); }
 
-	void setRuns(uint runs) { m_runs = runs; }
+	void setRuns(uint runs) { _runs = runs; }
 
-	void runs() { return m_runs; }
+	void runs() { return _runs; }
 
 protected:
-	uint m_runs, m_runNr;
-	std::vector<_RESULT> m_results;
+	uint _runs, _run_nr;
+	std::vector<_RESULT> _results;
 };
 
 
@@ -46,8 +46,8 @@ public:
 	double avg() {
 
 		double avg = 0;
-		for (uint n = 0; n < this->m_results.size(); ++n) {
-			avg += this->m_results[n] / double(this->m_results.size());
+		for (uint n = 0; n < this->_results.size(); ++n) {
+			avg += this->_results[n] / double(this->_results.size());
 		}
 		return avg;
 	}

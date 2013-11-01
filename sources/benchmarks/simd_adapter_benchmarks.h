@@ -3,6 +3,7 @@
 
 
 #include "vectors/BitPackedVectorSIMD.h"
+#include "vectors/BitPackedVectorSIMD2.h"
 
 #include "benchmark/Benchmarker.h"
 #include "benchmark/Timer.h"
@@ -20,7 +21,7 @@ public:
     BCVInsertBenchmark_(uint runs, uint size, uint** data) : NumericBenchmarker<double>(runs), m_data(data), m_size(size) {}
     double run() {
     	BitCompressedVector<uint, BITS> v = BitCompressedVector<uint, BITS>();
-    	uint* data = m_data[m_runNr];
+    	uint* data = m_data[_run_nr];
     	Timer timer(true);
         for (size_t n = 0; n < m_size; ++n) {
             v.push_back(data[n]);
@@ -37,7 +38,7 @@ public:
     BCVAdapterInsertBenchmark_(uint runs, uint size, uint** data) : NumericBenchmarker<double>(runs), m_data(data), m_size(size) {}
     double run() {
     	BitCompressedVectorAdapter<BITS> v = BitCompressedVectorAdapter<BITS>();
-    	uint* data = m_data[m_runNr];
+    	uint* data = m_data[_run_nr];
     	Timer timer(true);
         for (size_t n = 0; n < m_size; ++n) {
             v.push_back(data[n]);
@@ -55,7 +56,7 @@ public:
     SIMDVectorInsertBenchmark_(uint runs, uint size, uint** data) : NumericBenchmarker<double>(runs), m_data(data), m_size(size) {}
     double run() {
     	BitPackedVectorSIMD v(BITS);
-    	uint* data = m_data[m_runNr];
+    	uint* data = m_data[_run_nr];
     	Timer timer(true);
         for (size_t n = 0; n < m_size; ++n) {
             v.push_back(data[n]);
@@ -72,7 +73,7 @@ public:
     SIMDVector2InsertBenchmark_(uint runs, uint size, uint** data) : NumericBenchmarker<double>(runs), m_data(data), m_size(size) {}
     double run() {
     	BitPackedVectorSIMD2 v(BITS);
-    	uint* data = m_data[m_runNr];
+    	uint* data = m_data[_run_nr];
     	Timer timer(true);
         for (size_t n = 0; n < m_size; ++n) {
             v.push_back(data[n]);

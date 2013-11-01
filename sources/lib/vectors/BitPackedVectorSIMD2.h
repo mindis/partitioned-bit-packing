@@ -68,7 +68,6 @@ private:
 	BitCompressedVectorAdapter<61> m_vector61;
 	BitCompressedVectorAdapter<62> m_vector62;
 	BitCompressedVectorAdapter<63> m_vector63;
-	BitCompressedVectorAdapter<64> m_vector64;
 
 	uint m_bits;
 
@@ -142,7 +141,6 @@ public:
 		if (m_bits == 61) { return m_vector61.get(index); }
 		if (m_bits == 62) { return m_vector62.get(index); }
 		if (m_bits == 63) { return m_vector63.get(index); }
-		if (m_bits == 64) { return m_vector64.get(index); }
 
 		return 0;
 	}
@@ -211,7 +209,6 @@ public:
 		if (m_bits == 61) { m_vector61.push_back(val); return; }
 		if (m_bits == 62) { m_vector62.push_back(val); return; }
 		if (m_bits == 63) { m_vector63.push_back(val); return; }
-		if (m_bits == 64) { m_vector64.push_back(val); return; }
 	
 	}
 

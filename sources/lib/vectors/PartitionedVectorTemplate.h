@@ -12,7 +12,7 @@ protected:
     std::vector<size_t> m_prefixSums;
 
     _BPV* m_activeVector;
-    uint m_size, m_bits;
+    uint m_size, m_bits, m_baseEncoding;
 
     void initializeFirstPartition(uint baseEncoding);
 
@@ -30,6 +30,8 @@ public:
     size_t size(uint bits);
 
     void setEncodingBits(uint bits);
+
+    uint baseEncoding();
 
     std::vector<_BPV*>& vectors();
 };
